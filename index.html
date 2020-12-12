@@ -30,7 +30,7 @@
             btn.disable = true;
 
             let tesseractSettings = {
-                lang: 'rus+eng'
+                langs: 'rus+eng'
             };
 
             Tesseract.recognize("./assets/test.jpg", tesseractSettings).then(function (result) {
