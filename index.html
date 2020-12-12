@@ -35,7 +35,7 @@
 
             Tesseract.recognize("./assets/test.jpg", tesseractSettings).then(function (result) {
                 console.log(result);
-                document.getElementById("result").innerHTML(result.html)
+                document.getElementById("result").innerHTML = result.html
             }).finally(function () {
                 btn.disable = false;
             });
