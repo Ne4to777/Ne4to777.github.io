@@ -12,6 +12,7 @@
     <button id="img-to-txt">
         Convert image to text
     </button>
+    <div id="result"></div>
 
     <script src="./lib/tesseract/tesseract.js"></script>
     <script>
@@ -46,9 +47,8 @@
                 // The result object of a text recognition contains detailed data about all the text
                 // recognized in the image, words are grouped by arrays etc
                 console.log(result);
-
+                document.getElementById("result").innerHTML(result.html)
                 // Show recognized text in the browser !
-                alert(result.text);
             }).finally(function () {
                 // Enable button once the text recognition finishes (either if fails or not)
                 btn.disable = false;
