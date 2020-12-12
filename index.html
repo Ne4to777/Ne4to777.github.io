@@ -17,15 +17,15 @@
     <script>
         // 1. After including the Tesseract script, initialize it in the browser
         // Note: to prevent problems while tesseract loads scripts, provide the absolute path to the file from your domain
-        const domain = 'https://ne4to777.github.io/'
+        const absPath = 'https://ne4to777.github.io/lib/tesseract/'
         window.Tesseract = Tesseract.create({
             // Path to worker
-            workerPath: domain + 'worker.js',
+            workerPath: absPath + 'worker.js',
             // Path of folder where the language trained data is located
             // note the "/" at the end, this string will be concatenated with the selected language
-            langPath: domain + 'langs/',
+            langPath: absPath + 'langs/',
             // Path to index script of the tesseract core ! https://github.com/naptha/tesseract.js-core
-            corePath: domain + 'index.js',
+            corePath: absPath + 'index.js',
         });
 
         // 2. Write some logic to initialize the text recognition
