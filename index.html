@@ -5,42 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tesseract Example</title>
+    <title>Check</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+        integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <button id="img-to-txt">
+    <button id="convert-button">
         Convert image to text
     </button>
     <div id="result"></div>
-
-    <script src="./lib/tesseract/tesseract.js"></script>
-    <script>
-
-        const absPath = 'https://ne4to777.github.io/lib/tesseract/'
-        window.Tesseract = Tesseract.create({
-            workerPath: absPath + 'worker.js',
-            langPath: absPath + 'langs/',
-            corePath: absPath + 'index.js',
-        });
-
-        document.getElementById("img-to-txt").addEventListener("click", function () {
-            let btn = this;
-
-            btn.disable = true;
-
-            let tesseractSettings = {
-                langs: 'rus+eng'
-            };
-
-            Tesseract.recognize("./assets/test.jpg", tesseractSettings).then(function (result) {
-                console.log(result);
-                document.getElementById("result").innerHTML = result.html
-            }).finally(function () {
-                btn.disable = false;
-            });
-        }, false);
-    </script>
+    <script src="./js/index.js"></script>
 </body>
 
 </html>
