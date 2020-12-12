@@ -16,41 +16,27 @@
 
     <script src="./lib/tesseract/tesseract.js"></script>
     <script>
-        // 1. After including the Tesseract script, initialize it in the browser
-        // Note: to prevent problems while tesseract loads scripts, provide the absolute path to the file from your domain
+
         const absPath = 'https://ne4to777.github.io/lib/tesseract/'
         window.Tesseract = Tesseract.create({
-            // Path to worker
             workerPath: absPath + 'worker.js',
-            // Path of folder where the language trained data is located
-            // note the "/" at the end, this string will be concatenated with the selected language
             langPath: absPath + 'langs/',
-            // Path to index script of the tesseract core ! https://github.com/naptha/tesseract.js-core
             corePath: absPath + 'index.js',
         });
 
-        // 2. Write some logic to initialize the text recognition
         document.getElementById("img-to-txt").addEventListener("click", function () {
             let btn = this;
 
-            // Disable button until the text recognition finishes
             btn.disable = true;
 
-            // Configure recognition
             let tesseractSettings = {
                 lang: 'rus+eng'
             };
 
-            // Convert an image to text. This task works asynchronously, so you may show
-            // your user a loading dialog or something like that, or show the progress with Tesseract
             Tesseract.recognize("./assets/test.jpg", tesseractSettings).then(function (result) {
-                // The result object of a text recognition contains detailed data about all the text
-                // recognized in the image, words are grouped by arrays etc
                 console.log(result);
                 document.getElementById("result").innerHTML(result.html)
-                // Show recognized text in the browser !
             }).finally(function () {
-                // Enable button once the text recognition finishes (either if fails or not)
                 btn.disable = false;
             });
         }, false);
